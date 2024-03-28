@@ -30,46 +30,47 @@ N개의 수와 N-1개의 연산자가 주어졌을 때, 만들 수 있는 식의
 #             result *= num[i]
 #         elif p[i-1] == '/':
 #             result=int(result/num[i])
-    
+
 #     if max_result<result:
 #         max_result=result
 #     if result<min_result:
 #         min_result=result
 #     # max_result=max(max_result, result)
 #     # min_result=min(min_result, result)
-                
+
 # print(max_result)
 # print(min_result)
 
 
 import sys
 
-input=sys.stdin.readline
-n=int(input())
-num=list(map(int, input().split()))
-opt=list(map(int, input().split()))
+input = sys.stdin.readline
+n = int(input())
+num = list(map(int, input().split()))
+opt = list(map(int, input().split()))
 
-max_result=-1e9
-min_result=1e9
+max_result = -1e9
+min_result = 1e9
+
 
 def dfs(depth, total, plus, minus, multi, divide):
     global max_result, min_result
-    
+
     if depth == n:
         max_result = max(total, max_result)
         min_result = min(total, min_result)
         return
 
     if plus:
-        dfs(depth+1, total+num[depth], plus-1, minus, multi, divide)
+        dfs(depth + 1, total + num[depth], plus - 1, minus, multi, divide)
     if minus:
-        dfs(depth+1, total-num[depth], plus, minus-1, multi, divide)
+        dfs(depth + 1, total - num[depth], plus, minus - 1, multi, divide)
     if multi:
-        dfs(depth+1, total*num[depth], plus, minus, multi-1, divide)
+        dfs(depth + 1, total * num[depth], plus, minus, multi - 1, divide)
     if divide:
-        dfs(depth+1, int(total/num[depth]), plus, minus, multi, divide-1)
-    
+        dfs(depth + 1, int(total / num[depth]), plus, minus, multi, divide - 1)
 
-dfs(1, num[0], opt[0], opt[1], opt[2], opt[3])          
+
+dfs(1, num[0], opt[0], opt[1], opt[2], opt[3])
 print(max_result)
 print(min_result)

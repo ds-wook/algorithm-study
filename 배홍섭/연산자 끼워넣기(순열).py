@@ -14,41 +14,41 @@ operations = list(map(int, input().split()))
 # numbers = [1,2,3,4,5,6]
 # operations = [2,1,1,1]
 
-from itertools import permutations
 import math
+from itertools import permutations
 
-ops = ['+','-','*','/']
+ops = ["+", "-", "*", "/"]
 candidates = []
-for idx, operation in enumerate(operations): #최대 10개
-    candidates.extend(ops[idx]*operation)
-#print(op2num)
-#print(candidates)
+for idx, operation in enumerate(operations):  # 최대 10개
+    candidates.extend(ops[idx] * operation)
+# print(op2num)
+# print(candidates)
 
-candidates = list(permutations(candidates)) #최대 10! = 3,628,800번..
-#print(math.factorial(10))
-#print(candidates)
+candidates = list(permutations(candidates))  # 최대 10! = 3,628,800번..
+# print(math.factorial(10))
+# print(candidates)
 
 max_value, min_value = int(-1e9), int(1e9)
 for candidate in candidates:
     result = numbers[0]
     for number, op in zip(numbers[1:], candidate):
-        if op == '+':
-            result+=number
-        elif op=='-':
-            result-=number
-        elif op=='*':
-            result*=number
-        elif op=='/':
-            if result>=0:
-                result//=number
+        if op == "+":
+            result += number
+        elif op == "-":
+            result -= number
+        elif op == "*":
+            result *= number
+        elif op == "/":
+            if result >= 0:
+                result //= number
             else:
-                result= -1*result
-                result//=number
-                result= -1*result
+                result = -1 * result
+                result //= number
+                result = -1 * result
         else:
-            raise Exception('operation Error')
+            raise Exception("operation Error")
     max_value = max(max_value, result)
     min_value = min(min_value, result)
-    
+
 print(max_value)
 print(min_value)
