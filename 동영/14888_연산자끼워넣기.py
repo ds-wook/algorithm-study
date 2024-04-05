@@ -18,7 +18,7 @@ N개의 수와 N-1개의 연산자가 주어졌을 때, 만들 수 있는 식의
 # max_result=-1e9
 # min_result=1e9
 
-# for p in permutations(cal, n-1):
+# for p in set(permutations(cal, n-1)): # 같은 것이 존재함 so set으로 중복 제거
 #     result=num[0]
 
 #     for i in range(1,n):

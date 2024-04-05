@@ -45,7 +45,8 @@ def bfs():
     
     answer=max(answer, cnt)        
 
-def wall(cnt): # 백트래킹: 해를 찾는 도중 해가 아니어서 막히면, 되돌아가서 다시 해를 찾아가는 기법
+def wall(cnt): 
+    # 백트래킹: 해를 찾는 도중 해가 아니어서 막히면, 되돌아가서 다시 해를 찾아가는 기법
     if cnt==3:
         bfs()
         return
