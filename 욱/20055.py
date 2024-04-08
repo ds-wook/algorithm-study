@@ -1,7 +1,8 @@
 from collections import deque
+from typing import Deque, Iterable
 
 
-def solution(belt, robot):
+def solution(belt: Deque[Iterable[int]], robot: Deque[Iterable[int]]) -> int:
     result = 0
     while True:
         belt.rotate(1)

@@ -1,15 +1,10 @@
-def rotation(n: int, d: int) -> None:
-    if d == -1:
-        tmp_gear = gears[n][0]
-        for i in range(7):
-            gears[n][i] = gears[n][i + 1]
-        gears[n][7] = tmp_gear
-
-    if d == 1:
-        tmp_gear = gears[n][7]
-        for i in range(7, 0, -1):
-            gears[n][i] = gears[n][i - 1]
-        gears[n][0] = tmp_gear
+def rotation(gear: list, direction: int) -> list:
+    if direction == 1:  # 시계방향
+        return [gear[-1]] + gear[:-1]
+    elif direction == -1:  # 반시계방향
+        return gear[1:] + [gear[0]]
+    else:
+        raise Exception("Input Wrong direction")
 
 
 def check(n: int, d: int) -> None:
