@@ -26,8 +26,8 @@ if __name__ == "__main__":
     input = sys.stdin.readline
     N = int(input())
     num = list(map(int, input().split()))
-    plus, minus, multiply, divide = list(map(int, input().split()))
+    ops = list(map(int, input().split()))
     maximum = -1e9
     minimum = 1e9
 
-    dfs(1, num[0], plus, minus, multiply, divide)
+    dfs(1, num[0], *ops)
