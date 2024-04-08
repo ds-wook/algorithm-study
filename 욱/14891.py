@@ -1,5 +1,4 @@
 def rotation(n: int, d: int) -> None:
-
     if d == -1:
         tmp_gear = gears[n][0]
         for i in range(7):
