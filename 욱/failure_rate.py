@@ -1,7 +1,8 @@
 from collections import defaultdict
+from typing import List
 
 
-def solution(N, stages):
+def solution(N: int, stages: List[int]) -> List[int]:
     users = len(stages)
     failure = defaultdict(int)
 
@@ -9,6 +10,7 @@ def solution(N, stages):
         try:
             failure[num] = stages.count(num) / users
             users -= stages.count(num)
+
         except ZeroDivisionError:
             failure[num]
 
