@@ -44,15 +44,7 @@ for d,s in ds:
         new_x=(cloud[i][0]+dx[d-1]*s)%n
         new_y=(cloud[i][1]+dy[d-1]*s)%n
         
-        # if new_x<0:
-        #     new_x+=n
-        # elif new_x>=n:
-        #     new_x-=n
-        
-        # if new_y<0:
-        #     new_y+=n
-        # elif new_y>=n:
-        #     new_y-=n
+
         moved_cloud.append([new_x,new_y])
         graph[new_x][new_y]+=1
         visited[new_x][new_y]=True
