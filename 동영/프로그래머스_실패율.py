@@ -15,47 +15,12 @@ def solution(N, stages):
         
         cnt=stages.count(i)
         
-        if length==0:
+        if length==0: # 도중에 모든 player가 탈락한 경우
             fail.append((i,0))
         else:
             fail.append((i,cnt/length))
         
         length-=cnt
-    
-    # print(sorted(fail.items(), key=lambda x:-x[0]))
-    # answer=[]
-    # for a,b in sorted(fail.items(), key=lambda x:-x[0]):
-    #     answer.extend(b)
-        # print(fail.keys()[list(fail.items()).index(i)-1])
-        # answer.extend(i)
-    
-    # answer = [j for i in sorted(fail, reverse=True) for j in fail[i]]
-    
-    
-#     answer=[]
-#     while stages:       # for s in list(set(stages))
-#         s=stages[0]
-#         if s==N+1:    
-#             break
-#         else:    
-#             # if stages.count(s)/len(stages) in fail.keys():
-#             #     fail[stages.count(s)/len(stages)].append(s)
-#             # else:
-#             #     fail[stages.count(s)/len(stages)]=[s]
-#             if answer==0:
-#                 answer.append()
-#             fail[s]=stages.count(s)/len(stages)
-            
-#             for _ in range(stages.count(s)):
-#                 stages.pop(0)
-#     print(fail)
-
-#     fail={fail[i]:i for i in fail.keys()}
-#     print(fail)
-#     answer=[]
-#     for i in range(N):
-#         if i in fail.keys():
-#             answer.append(fail[i])
     
     # print(sorted(fail, key=lambda x:x[1], reverse=True))
     answer=[x[0] for x in sorted(fail, key=lambda x:x[1], reverse=True)]
