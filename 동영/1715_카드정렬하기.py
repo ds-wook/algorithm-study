@@ -21,7 +21,7 @@ N개의 숫자 카드 묶음의 각각의 크기가 주어질 때, 최소한 몇
 
 # total=0
 # while len(card)>1:
-#     card.sort()
+#     card.sort() # 매번 정렬해야됨 -> 시간 초과 / 시간 복잡도 N
 
 #     x=card.pop(0)
 #     y=card.pop(0)
@@ -32,25 +32,24 @@ N개의 숫자 카드 묶음의 각각의 크기가 주어질 때, 최소한 몇
 # print(total)
 
 
-# import sys
-# import heapq
+import sys
+import heapq # 시간 복잡도 logN
 
-# input=sys.stdin.readline
+input=sys.stdin.readline
 
-# n=int(input().rstrip())
-# cards = []
-# for _ in range(n):
-#     heapq.heappush(cards, int(input().rstrip()))
+n=int(input().rstrip())
+cards = []
+for _ in range(n):
+    heapq.heappush(cards, int(input().rstrip()))
 
-# total_cost = 0
-# while len(cards) > 1:
-#     # 가장 작은 두 카드 묶음을 꺼내서 합칩니다.
-#     a = heapq.heappop(cards)
-#     b = heapq.heappop(cards)
-#     sum_value = a + b
+total_cost = 0
+while len(cards) > 1:
+    # 가장 작은 두 카드 묶음을 꺼내서 합칩니다.
+    a = heapq.heappop(cards)
+    b = heapq.heappop(cards)
 
-#     # 두 묶음을 합친 비용을 누적하고, 합친 결과를 다시 큐에 넣습니다.
-#     total_cost += sum_value
-#     heapq.heappush(cards, sum_value)
+    # 두 묶음을 합친 비용을 누적하고, 합친 결과를 다시 큐에 넣습니다.
+    total_cost += (a + b)
+    heapq.heappush(cards, a + b)
 
-# print(total_cost)
+print(total_cost)

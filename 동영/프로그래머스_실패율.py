@@ -23,5 +23,41 @@ def solution(N, stages):
         length-=cnt
     
     # print(sorted(fail, key=lambda x:x[1], reverse=True))
+    
     answer=[x[0] for x in sorted(fail, key=lambda x:x[1], reverse=True)]
     return answer
+
+
+        # print(sorted(fail.items(), key=lambda x:-x[0]))
+    # answer=[]
+    # for a,b in sorted(fail.items(), key=lambda x:-x[0]):
+    #     answer.extend(b)
+        # print(fail.keys()[list(fail.items()).index(i)-1])
+        # answer.extend(i)
+    
+    # answer = [j for i in sorted(fail, reverse=True) for j in fail[i]]
+    
+
+#     for i in range(1,N+1):      
+#         s=stages[0]
+#         if s==N+1:    
+#             break
+#         else:    
+#             # if stages.count(s)/len(stages) in fail.keys():
+#             #     fail[stages.count(s)/len(stages)].append(s)
+#             # else:
+#             #     fail[stages.count(s)/len(stages)]=[s]
+#             if answer==0:
+#                 answer.append()
+#             fail[s]=stages.count(s)/len(stages)
+            
+#             for _ in range(stages.count(s)):
+#                 stages.pop(0)
+    
+    # answer=[]
+    # for a,b in sorted(fail.items(), key=lambda x:-x[0]):
+    #     answer.extend(b)
+        # print(fail.keys()[list(fail.items()).index(i)-1])
+        # answer.extend(i)
+    
+    # answer = [j for i in sorted(fail, reverse=True) for j in fail[i]]
