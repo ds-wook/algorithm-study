@@ -1,4 +1,7 @@
-def install_router(array, start, end):
+from typing import List
+
+
+def install_router(array: List[int], start: int, end: int, c: int) -> None:
     while start <= end:
         mid = (start + end) // 2
         current = array[0]
