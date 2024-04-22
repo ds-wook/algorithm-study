@@ -9,47 +9,48 @@
 각 나라의 인구수가 주어졌을 때, 인구 이동이 며칠 동안 발생하는지 구하는 프로그램을 작성하시오.
 
 """
+
 ## => 이어서 풀기
 
 import sys
 from collections import deque
 
-input=sys.stdin.readline
+input = sys.stdin.readline
 
-n,l,r=list(map(int, input().split()))
+n, l, r = list(map(int, input().split()))
 
-a=[list(map(int, input().split())) for _ in range(n)]
+a = [list(map(int, input().split())) for _ in range(n)]
 
-dx=[0,0,1,-1]
-dy=[1,-1,0,0]
-    
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
+
 
 def bfs():
-    q=deque()
-    cnt=0
-    
+    q = deque()
+    cnt = 0
+
     while q:
-        x,y=q.popleft()
-        
+        x, y = q.popleft()
+
         for i in range(4):
-            nx=x+dx[i]
-            ny=y+dy[i]
-            
-            if (nx>=0 and nx<2) and (ny>=0 and ny<2) and united[nx][ny]==0:
-                q.append([nx,ny])
-                cnt+=1
-                united[i][j]=0
-    
+            nx = x + dx[i]
+            ny = y + dy[i]
+
+            if (nx >= 0 and nx < 2) and (ny >= 0 and ny < 2) and united[nx][ny] == 0:
+                q.append([nx, ny])
+                cnt += 1
+                united[i][j] = 0
+
     for i in range(n):
         for j in range(n):
-            if union[i][j]!=0:
-                a[i][j]=sum(union)//cnt
+            if union[i][j] != 0:
+                a[i][j] = sum(union) // cnt
 
 
-union=[[0 for _ in range(n)] for _ in range(n)]
-united=[[1 for _ in range(n)] for _ in range(n)]
+union = [[0 for _ in range(n)] for _ in range(n)]
+united = [[1 for _ in range(n)] for _ in range(n)]
 
 for i in range(n):
     for j in range(n):
-        if l<=a[i][j] and a[i][j]<r:
+        if l <= a[i][j] and a[i][j] < r:
             bfs()

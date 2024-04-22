@@ -1,4 +1,4 @@
-'''
+"""
 길이가 N인 컨베이어 벨트가 있고, 길이가 2N인 벨트가 이 컨베이어 벨트를 위아래로 감싸며 돌고 있다.
 벨트가 한 칸 회전하면 1번부터 2N-1번까지의 칸은 다음 번호의 칸이 있는 위치로 이동하고, 2N번 칸은 1번 칸의 위치로 이동한다. i번 칸의 내구도는 Ai이다. 
 위의 그림에서 1번 칸이 있는 위치를 "올리는 위치", N번 칸이 있는 위치를 "내리는 위치"라고 한다.
@@ -14,40 +14,40 @@
 4. 내구도가 0인 칸의 개수가 K개 이상이라면 과정을 종료한다. 그렇지 않다면 1번으로 돌아간다.
 
 종료되었을 때 몇 번째 단계가 진행 중이었는지 구해보자. 가장 처음 수행되는 단계는 1번째 단계이다.
-'''
+"""
 
 import sys
 from collections import deque
 
-input=sys.stdin.readline
+input = sys.stdin.readline
 
-n,k=map(int, input().rstrip().split())
-belt=deque(list(map(int, input().rstrip().split())))
-cnt=0
-robot=deque([0 for _ in range(n)])
+n, k = map(int, input().rstrip().split())
+belt = deque(list(map(int, input().rstrip().split())))
+cnt = 0
+robot = deque([0 for _ in range(n)])
 
 while True:
-    cnt+=1
-    
+    cnt += 1
+
     # 1. belt 회전
     belt.rotate(1)
-    robot[-1]=0 # 내리는 곳에 로봇 내리기
+    robot[-1] = 0  # 내리는 곳에 로봇 내리기
     robot.rotate(1)
-    robot[-1]=0 # 내리는 곳에 로봇 내리기
-    
+    robot[-1] = 0  # 내리는 곳에 로봇 내리기
+
     # 2. 로봇 이동하기 -> 이동할 자리 존재, 내구성 1이상
-    for i in range(n-2,-1,-1): # 1~n-1 => 리스트 index는 0~n-2
-        if belt[i+1]>=1 and robot[i]==1 and robot[i+1]==0:
-            robot[i+1]=1
-            robot[i]=0
-            belt[i+1]-=1
-    robot[-1]=0 # 내리는 곳에 로봇 내리기
-    
+    for i in range(n - 2, -1, -1):  # 1~n-1 => 리스트 index는 0~n-2
+        if belt[i + 1] >= 1 and robot[i] == 1 and robot[i + 1] == 0:
+            robot[i + 1] = 1
+            robot[i] = 0
+            belt[i + 1] -= 1
+    robot[-1] = 0  # 내리는 곳에 로봇 내리기
+
     # 3. 올리는 위치에 있는 칸의 내구도가 0이 아니면 올리는 위치에 로봇을 올리기
-    if belt[0]!=0 and robot[0]==0:
-        belt[0]-=1
-        robot[0]=1     
-    
+    if belt[0] != 0 and robot[0] == 0:
+        belt[0] -= 1
+        robot[0] = 1
+
     if belt.count(0) >= k:
         print(cnt)
-        break   
+        break

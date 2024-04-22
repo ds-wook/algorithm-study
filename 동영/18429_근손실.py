@@ -1,4 +1,4 @@
-'''
+"""
 웨이트 트레이닝을 좋아하는 어떤 대학원생은, 현재 3대 운동 중량 500의 괴력을 소유하고 있다. 다만, 하루가 지날 때마다 중량이 K만큼 감소한다. 
 예를 들어 K=4일 때, 3일이 지나면 중량이 488로 감소하게 된다. 따라서 운동을 하지 않고, 가만히 있다면 매일매일 중량이 감소할 뿐이다.
 
@@ -19,34 +19,37 @@
 
 N개의 운동 키트에 대한 정보가 주어졌을 때, N일간 하루에 1개씩의 운동 키트를 사용하는 모든 경우 중에서, 
 운동 기간동안 항상 중량이 500 이상이 되도록 하는 경우의 수를 출력하는 프로그램을 작성하시오.
-'''
-3 
+"""
+
+3
 import sys
 
-input=sys.stdin.readline
+input = sys.stdin.readline
 
-n,k=list(map(int, input().rstrip().split()))
-kit=list(map(int, input().rstrip().split()))
-cnt=0
-lifted=[False]*n
+n, k = list(map(int, input().rstrip().split()))
+kit = list(map(int, input().rstrip().split()))
+cnt = 0
+lifted = [False] * n
+
 
 def dfs(day, strength):
     global cnt
     # print(f'day {day}')
-       
-    if strength<500:
-        return 
+
+    if strength < 500:
+        return
         # day+=1
-    if day==n:
-        cnt+=1
-        return 
-        
+    if day == n:
+        cnt += 1
+        return
+
     for i in range(n):
         if not lifted[i]:
-            lifted[i]=True    
-            dfs(day+1, strength-k+kit[i])
-            lifted[i]=False
+            lifted[i] = True
+            dfs(day + 1, strength - k + kit[i])
+            lifted[i] = False
+
 
 dfs(0, 500)
-  
+
 print(cnt)
