@@ -1,18 +1,17 @@
-from collections import defaultdict
 from typing import List
 
 
 def solution(N: int, stages: List[int]) -> List[int]:
     users = len(stages)
-    failure = defaultdict(int)
+    failure = dict()
 
     for num in range(1, N + 1):
-        try:
+        if users:
             failure[num] = stages.count(num) / users
             users -= stages.count(num)
 
-        except ZeroDivisionError:
-            failure[num]
+        else:
+            failure[num] = 0
 
     answer = sorted(failure, key=lambda x: failure[x], reverse=True)
 
