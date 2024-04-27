@@ -1,12 +1,17 @@
 def solution(triangle):
-    floor = len(triangle)
+    dp = triangle.copy()
+    depth = len(dp)
 
-    while floor > 0:
-        for i in range(floor - 1):
-            triangle[floor - 2][i] += max(triangle[floor - 1][i], triangle[floor - 1][i + 1])
-        floor -= 1
+    for i in range(1, depth):
+        for j in range(i + 1):
+            if j == 0:
+                dp[i][j] += dp[i - 1][j]
+            elif j == i:
+                dp[i][j] += dp[i - 1][j - 1]
+            else:
+                dp[i][j] += max(dp[i - 1][j - 1], dp[i - 1][j])
 
-    return triangle[0][0]
+    return max(dp[depth - 1])
 
 
 if __name__ == "__main__":
