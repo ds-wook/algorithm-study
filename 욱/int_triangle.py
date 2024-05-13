@@ -4,6 +4,7 @@ def solution(triangle):
 
     for i in range(1, depth):
         for j in range(i + 1):
+            print(dp)
             if j == 0:
                 dp[i][j] += dp[i - 1][j]
             elif j == i:
