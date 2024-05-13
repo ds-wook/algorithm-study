@@ -10,7 +10,7 @@ def find_parent(parent: List[int], x: int) -> int:
     return parent[x]
 
 
-def union_parent(parent: list[int], a: int, b: int) -> None:
+def union_parent(parent: List[int], a: int, b: int) -> None:
     a = find_parent(parent, a)
     b = find_parent(parent, b)
     if a < b:
